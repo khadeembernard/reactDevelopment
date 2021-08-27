@@ -12,15 +12,17 @@ function BookList() {
     </section>
   );
 }
+// by using the spread operator your listing all the props as its own field
+//img={img} author={author} title ={title}
 
 const Book = (props)=>{
   const {img, author,title} = props;
-
+  //now you can remove book because there is no longer an object being passed just properties which props can handle
   return (
     <article className='book'>
       <img src={img} alt={title} />
       <h1>{title}</h1>
-      <h3>{author}</h3>
+      <h3>{author.toUpperCase}</h3>
     </article>
   );
 }

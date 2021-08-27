@@ -1,26 +1,27 @@
 import React, { Children } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
+//Yes you can use the index as a replacement for book.id, but this will cause issues as indexes change and arrays change k={index}
 function BookList() {
   return(
     <section className='bookList'>
       {books.map((book)=>{
-        console.log(book)
-        return <Book key={book.id} {...book}></Book>
+        console.log(book,index)
+        return <Book key={book.id} book={book}></Book>
       })}
     </section>
   );
 }
+//A key prop. For every list there must be a unique identifier.
+//in most cases if you accessing data from an  api the already have some kind of unique id of key prop that you will take advantage of. Since we are doing this on our own we will be making one.
 
 const Book = (props)=>{
-  const {img, author,title} = props;
-
+  const {img, author,title} = props.book;
   return (
     <article className='book'>
       <img src={img} alt={title} />
       <h1>{title}</h1>
-      <h3>{author}</h3>
+      <h3>{author.toUpperCase}</h3>
     </article>
   );
 }
